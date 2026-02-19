@@ -1,0 +1,9 @@
+pymatreader==0.0.32
+hdmf==3.14.6
+pynwb==2.8.0
+ndx-fiber-photometry==0.1.0
+openpyxl==3.1.2
+aicsimageio==4.14.0
+roiextractors==0.5.8
+neuroconv[video]==0.6.1
+remfile==0.1.13 # for the Jupyter notebook tutorial

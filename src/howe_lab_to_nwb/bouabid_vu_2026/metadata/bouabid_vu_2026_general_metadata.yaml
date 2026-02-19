@@ -1,0 +1,52 @@
+NWBFile:
+  related_publications:
+    - https://doi.org/10.64898/2026.01.20.700614
+  experiment_description: |
+    Dopamine (DA) and acetylcholine (ACh) are key neuromodulators that regulate striatal circuits underlying movement 
+    and reinforcement learning. Evidence suggests that DA and ACh systems interact, but where and how interactions are 
+    expressed across striatal regions in behaviorally relevant release dynamics remains unknown. We applied micro-fiber 
+    arrays to simultaneously measure striatum-wide DA and ACh in behaving mice, revealing an anatomical organization in 
+    which DA-ACh anti-correlations were concentrated in a hotspot in the anterior dorsolateral striatum (aDLS). 
+    Anti-correlations resulted from temporally coincident pairs of spontaneous and event-locked transient peak and dip 
+    events occurring in a DA→ACh sequence. The aDLS localized hotspot was consistently expressed within distinct signals 
+    associated with unpredicted rewards, learned and extinguished Pavlovian cues, and locomotion initiation and 
+    invigoration phases, for which we revealed novel, opposing DA-ACh dynamics. Optogenetic activation of DA neurons 
+    selectively suppressed spontaneous ACh release within the aDLS hotspot, and ex vivo recordings revealed enhanced 
+    D2-mediated ACh inhibition in aDLS relative to ventral regions, suggesting a mechanistic basis for this spatial 
+    specificity. These findings demonstrate that DA-ACh interactions during behavior are spatially organized, rather 
+    than uniformly conserved, and shape behaviorally relevant dynamics to regulate region-specific functions in learning 
+    and movement control.
+  session_description: |
+    This dataset contains fiber photometry recordings from multi-fiber arrays implanted in the striatum in mice running 
+    on a treadmill wheel or treadmill ball. Some sessions may include water reward delivery, where a water spout mounted 
+    on a post delivered water rewards (9 μL) at random time intervals (randomly drawn from a 5-30s uniform distribution) 
+    through a water spout and solenoid valve gated electronically. Some session include optogenetic midbrain stimulation 
+    during unpredicted reward recordings. Some sessions include a Pavlovian task with 2 cues: visual (blue LED) or auditory 
+    (12 kHz tone) stimuli at random intervals (4–40 s) and rewarded at 100% during the learning phase, or 80/20% during the 
+    extinction phase (rewarded and extinguished cue, respectively). Licking was monitored by a capacitive touch circuit 
+    connected to the spout. 
+  keywords:
+    - multi-fiber photometry
+    - behaving mice
+    - freely moving mice
+    - striatum
+    - dopamine
+    - acetylcholine
+  institution: Boston University
+  lab: Howe
+  experimenter:
+    - Bouabid, Safa; Vu, Mai-Anh
+  protocol: https://doi.org/10.64898/2026.01.20.700614
+  pharmacology: |
+   Mice were anesthetized with 3-4% isoflurane and positioned in a stereotaxic frame (Kopf instruments) on an electric 
+   heating pad (Physitemp instruments). Pre-operative analgesia was administered using extended-release buprenorphine 
+   (3.25 mg/kg, subcutaneous, Ethiqa XR). After induction, isoflurane was maintained at 1-2% (in 0.8-1 L min-1 pure oxygen), 
+   with body temperature maintained at 37°C throughout surgery. The scalp was shaved and cleaned with iodine solution before 
+   performing a large craniotomy over the right hemisphere with a surgical drill (Midwest Tradition 790044, Avtec Dental RMWT), 
+   exposing the brain surface from 2.2 to -1.8 mm in the anterior-posterior (AP) direction and 0.49 to 3.4 mm in the medial-
+   lateral (ML) direction relative to bregma. For simultaneous dopamine-acetylcholine extracellular recordings, 350 nl of a 
+   1:6 mix of pAAV-hSyn-rDA3m (5.83 x 1012 VG ml-1, Bio hippo59) and AAV9-hSyn-ACh3.0 (5.86 x 1012 GC ml−1, Bio hippo 60) was 
+   pressure-injected into the striatum of WT mice at a rate of 100nl/ min through a pulled glass pipette (tip diameter 30-50 μm) 
+   at approximately 30 locations chosen to maximize expression around fiber tips. For control experiments, 500 nl of a 1:67 mix 
+   of pAAV-CAG-tdTomato (Adgene #59462) and AAV9-hysn-ACh4.3-mut (WZ Biosciences) 60, was injected into the striatum of WT mice 
+   using the same strategy.
