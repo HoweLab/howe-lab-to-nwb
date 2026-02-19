@@ -108,7 +108,7 @@ def convert_all_dual_wavelength_sessions(
         )
 
         results = list(inspect_nwbfile(nwbfile_path=nwbfile_path))
-        report_path = nwbfile_folder_path / f"{subject_id}-{exp_dir}_nwbinspector_result.txt"
+        report_path = nwbfile_folder_path / f"{subject_id}_{exp_dir}_nwbinspector_result.txt"
         if not report_path.exists():
             save_report(
                 report_file_path=report_path,
