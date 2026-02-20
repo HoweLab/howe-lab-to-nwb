@@ -82,43 +82,47 @@ def convert_all_dual_wavelength_sessions(
         indicators = [_get_indicator_from_aav_string(table["Relevant Injected Sensor: green"].values[0]),_get_indicator_from_aav_string(table["Relevant Injected Sensor: red"].values[0])]
         ttl_file_path = session_folder_path / "raw" / table["Raw Behavior File"].values[0]
         ttl_stream_names = ["ttlIn1","ttlIn2"]
-        nwbfile_path = nwbfile_folder_path / f"{subject_id}_{exp_dir}.nwb"
+        
+        nwbfile_path = nwbfile_folder_path / f"sub-{subject_id}_ses-{exp_dir}.nwb"
+        
         if stub_test:
-            nwbfile_path = nwbfile_folder_path / f"stub-{subject_id}_{exp_dir}.nwb"
+            nwbfile_path = nwbfile_folder_path / f"stub_sub-{subject_id}_ses-{exp_dir}.nwb"
         if nwbfile_path.exists() and not overwrite:
             progress_bar.update(1)
             continue
 
         progress_bar.set_description(f"Converting subject '{subject_id}' session '{exp_dir}' session to NWB ...")
-
-        dual_wavelength_session_to_nwb(
-            raw_imaging_file_paths=raw_imaging_file_paths,
-            processed_data_file_path=processed_data_file_path,
-            fiber_photometry_fields=fiber_photometry_fields,
-            behavior_fields=behavior_fields,
-            index_fields=index_fields,
-            fiber_locations_file_path=fiber_locations_file_path,
-            excitation_wavelengths_in_nm=excitation_wavelengths_in_nm,
-            indicators=indicators,
-            ttl_file_path=ttl_file_path,
-            ttl_stream_names=ttl_stream_names,
-            nwbfile_path=nwbfile_path,
-            sampling_frequency=18,
-            subject_metadata=subject_metadata,            
-        )
-
-        results = list(inspect_nwbfile(nwbfile_path=nwbfile_path))
-        report_path = nwbfile_folder_path / f"{subject_id}_{exp_dir}_nwbinspector_result.txt"
-        if not report_path.exists():
-            save_report(
-                report_file_path=report_path,
-                formatted_messages=format_messages(
-                    results,
-                    levels=["importance", "file_path"],
-                ),
+        try:
+            dual_wavelength_session_to_nwb(
+                raw_imaging_file_paths=raw_imaging_file_paths,
+                processed_data_file_path=processed_data_file_path,
+                fiber_photometry_fields=fiber_photometry_fields,
+                behavior_fields=behavior_fields,
+                index_fields=index_fields,
+                fiber_locations_file_path=fiber_locations_file_path,
+                excitation_wavelengths_in_nm=excitation_wavelengths_in_nm,
+                indicators=indicators,
+                ttl_file_path=ttl_file_path,
+                ttl_stream_names=ttl_stream_names,
+                nwbfile_path=nwbfile_path,
+                sampling_frequency=18,
+                subject_metadata=subject_metadata,            
             )
-
-        progress_bar.update(1)
+    
+            results = list(inspect_nwbfile(nwbfile_path=nwbfile_path))
+            report_path = nwbfile_folder_path / f"sub-{subject_id}_ses-{exp_dir}_nwbinspector_result.txt"
+            if not report_path.exists():
+                save_report(
+                    report_file_path=report_path,
+                    formatted_messages=format_messages(
+                        results,
+                        levels=["importance", "file_path"],
+                    ),
+                )
+    
+            progress_bar.update(1)
+        except:
+            print(f"ERROR converting '{subject_id}' session '{exp_dir}'")
 
 
 if __name__ == "__main__":
@@ -128,13 +132,13 @@ if __name__ == "__main__":
     data_table_excel_file_path = Path("D:/data_table.xlsx")
 
     # The list of subjects to convert
-    subject_ids = ["UG27"]
+    subject_ids = ["UG27","UG28","UG29","UG30","UG31","AD1","AD2","AD3","AD4","AD5","AD6","ADS6","ADS12","ADS13","ADS16","ADS17","ADS19"]
 
     # The root folder path to search for the filenames in the data table
     folder_path = Path("D:")
 
     # The folder path to save the NWB files
-    nwbfile_folder_path = Path("D:/NWB")
+    nwbfile_folder_path = Path("F:/NWB")
     if not nwbfile_folder_path.exists():
         nwbfile_folder_path.mkdir(exist_ok=True)
 

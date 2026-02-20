@@ -101,7 +101,7 @@ def dual_wavelength_session_to_nwb(
     )
     
     # Add data from the second excitation wavelength and write to NWB file
-    # don't include behavior_field because we only need behavior from one channel
+    # don't include behavior_field or subject_metadata because we already have that from the first channel
     single_wavelength_session_to_nwb(
         raw_imaging_file_path=raw_imaging_file_paths[1],
         frame_indices=second_frame_indices,        
@@ -113,9 +113,7 @@ def dual_wavelength_session_to_nwb(
         excitation_wavelength_in_nm=excitation_wavelengths_in_nm[1],
         indicator=indicators[1],
         ttl_file_path=ttl_file_path,
-        ttl_stream_name=ttl_stream_names[1],
-        sampling_frequency=sampling_frequency,
-        subject_metadata=subject_metadata,
+        ttl_stream_name=ttl_stream_names[1],            
         excitation_mode="dual-wavelength",
         nwbfile=nwbfile, # to add to the first one
         nwbfile_path=nwbfile_path, # write out
@@ -140,7 +138,7 @@ if __name__ == "__main__":
     excitation_wavelengths_in_nm = [470, 570]
     indicators = ["ACh3.0", "rDA3m"]
     sampling_frequency = 18
-    nwbfile_path = Path("D:/NWB/UG27_240214.nwb")    
+    nwbfile_path = Path("D:/NWB/sub-UG27_ses-240214.nwb")    
     if not nwbfile_path.parent.exists():
         os.makedirs(nwbfile_path.parent, exist_ok=True)
     stub_test = False

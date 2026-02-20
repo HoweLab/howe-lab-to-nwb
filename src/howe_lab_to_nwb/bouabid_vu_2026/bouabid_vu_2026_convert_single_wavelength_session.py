@@ -228,7 +228,7 @@ if __name__ == "__main__":
     excitation_wavelength_in_nm = 470
     indicator = "ACh3.0"
 
-    nwbfile_path = Path("D:/NWB/UG27_240214.nwb")
+    nwbfile_path = Path("D:/NWB/sub-UG27_ses-240214.nwb")
     if not nwbfile_path.parent.exists():
         os.makedirs(nwbfile_path.parent, exist_ok=True)
     stub_test = False

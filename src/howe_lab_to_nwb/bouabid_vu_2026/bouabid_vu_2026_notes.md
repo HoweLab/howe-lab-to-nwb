@@ -128,7 +128,7 @@ single_wavelength_session_to_nwb(
         fiber_photometry_field="ACh",        
         behavior_field="behav_ACh",
         index_field="ACh_idx",
-        nwbfile_path="D:/NWB/UG27_240214.nwb",
+        nwbfile_path="D:/NWB/sub-UG27/sub-UG27_ses-240214.nwb",
         sampling_frequency=18,
     )
 
@@ -171,7 +171,7 @@ dual_wavelength_session_to_nwb(
         fiber_photometry_fields=["ACh", "DA"],
         behavior_fields=["behav_ACh","behav_DA"],
         index_fields=["ACh_idx","DA_idx"],
-        nwbfile_path="D:/NWB/UG27_240214.nwb",
+        nwbfile_path="D:/NWB/sub-UG27/sub-UG27_ses-240214.nwb",
         sampling_frequency=18,
     )
 ```
