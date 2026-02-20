@@ -35,7 +35,7 @@ NWBFile:
   institution: Boston University
   lab: Howe
   experimenter:
-    - ["Bouabid, Safa","Vu, Mai-Anh"]
+    - "Vu, Mai-Anh"
   protocol: https://doi.org/10.64898/2026.01.20.700614
   pharmacology: |
    Mice were anesthetized with 3-4% isoflurane and positioned in a stereotaxic frame (Kopf instruments) on an electric 
