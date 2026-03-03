@@ -236,50 +236,52 @@ class BouabidVu2026FiberPhotometryInterface(BaseTemporalAlignmentInterface):
          # Add high-pass filtered baseline corrected fluorescence data to NWBFile
         if "Fc_exp_hp" in fiber_photometry_data:
             corrected_fluorescence = fiber_photometry_data["Fc_exp_hp"]
-            corrected_data_to_add = corrected_fluorescence if not stub_test else corrected_fluorescence[:100]
-            fluorescence_metadata = deepcopy(metadata["Ophys"]["FiberPhotometry"]["FiberPhotometryResponseSeries"][0])
-            fiber_photometry_series_name = f"DfOverFexpHp{fluorescence_metadata['name']}"
-            description = fluorescence_metadata["description"]
-            description = description.replace("Raw", "High-pass filtered, baseline corrected (DF/F)")
-            fluorescence_metadata.update(
-                name=fiber_photometry_series_name,
-                description=description,
-            )
-            metadata["Ophys"]["FiberPhotometry"]["FiberPhotometryResponseSeries"].append(fluorescence_metadata)
-
-            add_fiber_photometry_series(
-                nwbfile=nwbfile,
-                metadata=metadata,
-                data=corrected_data_to_add,
-                timestamps=timestamps,
-                fiber_photometry_series_name=fiber_photometry_series_name,
-                fiber_locations_metadata=fiber_locations_metadata,
-                table_region=fiber_table_region,
-                parent_container="processing/ophys",
-            )
+            if corrected_fluorescence.shape[0]>0:
+                corrected_data_to_add = corrected_fluorescence if not stub_test else corrected_fluorescence[:100]
+                fluorescence_metadata = deepcopy(metadata["Ophys"]["FiberPhotometry"]["FiberPhotometryResponseSeries"][0])
+                fiber_photometry_series_name = f"DfOverFexpHp{fluorescence_metadata['name']}"
+                description = fluorescence_metadata["description"]
+                description = description.replace("Raw", "High-pass filtered, baseline corrected (DF/F)")
+                fluorescence_metadata.update(
+                    name=fiber_photometry_series_name,
+                    description=description,
+                )
+                metadata["Ophys"]["FiberPhotometry"]["FiberPhotometryResponseSeries"].append(fluorescence_metadata)
+    
+                add_fiber_photometry_series(
+                    nwbfile=nwbfile,
+                    metadata=metadata,
+                    data=corrected_data_to_add,
+                    timestamps=timestamps,
+                    fiber_photometry_series_name=fiber_photometry_series_name,
+                    fiber_locations_metadata=fiber_locations_metadata,
+                    table_region=fiber_table_region,
+                    parent_container="processing/ophys",
+                )
             
         # Add high-pass filtered, baseline corrected, artifacts removed fluorescence data to NWBFile
         if "Fc_exp_hp_art" in fiber_photometry_data:
             corrected_fluorescence = fiber_photometry_data["Fc_exp_hp_art"]
-            corrected_data_to_add = corrected_fluorescence if not stub_test else corrected_fluorescence[:100]
-            fluorescence_metadata = deepcopy(metadata["Ophys"]["FiberPhotometry"]["FiberPhotometryResponseSeries"][0])
-            fiber_photometry_series_name = f"DfOverFexpHpArt{fluorescence_metadata['name']}"
-            description = fluorescence_metadata["description"]
-            description = description.replace("Raw", "High-pass filtered, baseline corrected (DF/F), artifacts removed")
-            fluorescence_metadata.update(
-                name=fiber_photometry_series_name,
-                description=description,
-            )
-            metadata["Ophys"]["FiberPhotometry"]["FiberPhotometryResponseSeries"].append(fluorescence_metadata)
-
-            add_fiber_photometry_series(
-                nwbfile=nwbfile,
-                metadata=metadata,
-                data=corrected_data_to_add,
-                timestamps=timestamps,
-                fiber_photometry_series_name=fiber_photometry_series_name,
-                fiber_locations_metadata=fiber_locations_metadata,
-                table_region=fiber_table_region,
-                parent_container="processing/ophys",
-            )
+            if corrected_fluorescence.shape[0]>0:
+                corrected_data_to_add = corrected_fluorescence if not stub_test else corrected_fluorescence[:100]
+                fluorescence_metadata = deepcopy(metadata["Ophys"]["FiberPhotometry"]["FiberPhotometryResponseSeries"][0])
+                fiber_photometry_series_name = f"DfOverFexpHpArt{fluorescence_metadata['name']}"
+                description = fluorescence_metadata["description"]
+                description = description.replace("Raw", "High-pass filtered, baseline corrected (DF/F), artifacts removed")
+                fluorescence_metadata.update(
+                    name=fiber_photometry_series_name,
+                    description=description,
+                )
+                metadata["Ophys"]["FiberPhotometry"]["FiberPhotometryResponseSeries"].append(fluorescence_metadata)
+    
+                add_fiber_photometry_series(
+                    nwbfile=nwbfile,
+                    metadata=metadata,
+                    data=corrected_data_to_add,
+                    timestamps=timestamps,
+                    fiber_photometry_series_name=fiber_photometry_series_name,
+                    fiber_locations_metadata=fiber_locations_metadata,
+                    table_region=fiber_table_region,
+                    parent_container="processing/ophys",
+                )
 

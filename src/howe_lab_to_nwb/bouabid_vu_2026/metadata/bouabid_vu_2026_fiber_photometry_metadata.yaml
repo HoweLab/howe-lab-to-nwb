@@ -164,10 +164,10 @@ Ophys:
     Indicator:
       - name: ACh3.0
         description: green acetyl choline sensor
-        label: rAAV-hSyn-ACh3.0 (AAV2/9)
-      - name: ACh3.0
-        description: green acetyl choline sensor
-        label: pAAV-hSyn-GRAB-ACh3.0 (AAV9)  
+        label: rAAV-hSyn-ACh3.0 (AAV2/9) or pAAV-hSyn-GRAB-ACh3.0 (AAV9) 
+      - name: ACh4.3mut
+        description: mutant green acetyl choline sensor
+        label: AAV9-hysn-ACh4.3mut
       - name: ACh4.3Mut
         description: mutant green acetyl choline sensor
         label: AAV9-hysn-ACh4.3mut 

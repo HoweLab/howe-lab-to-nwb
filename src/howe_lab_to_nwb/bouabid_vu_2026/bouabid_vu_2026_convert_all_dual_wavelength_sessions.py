@@ -108,7 +108,7 @@ def convert_all_dual_wavelength_sessions(
                 sampling_frequency=18,
                 subject_metadata=subject_metadata,            
             )
-    
+        
             results = list(inspect_nwbfile(nwbfile_path=nwbfile_path))
             report_path = nwbfile_folder_path / f"sub-{subject_id}_ses-{exp_dir}_nwbinspector_result.txt"
             if not report_path.exists():
@@ -119,7 +119,7 @@ def convert_all_dual_wavelength_sessions(
                         levels=["importance", "file_path"],
                     ),
                 )
-    
+        
             progress_bar.update(1)
         except:
             print(f"ERROR converting '{subject_id}' session '{exp_dir}'")
@@ -129,21 +129,23 @@ if __name__ == "__main__":
     # Parameters for conversion
 
     # The path to the XLSX file containing info for all the sessions
-    data_table_excel_file_path = Path("D:/data_table.xlsx")
+    data_table_excel_file_path = Path("G:/data_table.xlsx")
 
     # The list of subjects to convert
-    subject_ids = ["UG27","UG28","UG29","UG30","UG31","AD1","AD2","AD3","AD4","AD5","AD6","ADS6","ADS12","ADS13","ADS16","ADS17","ADS19"]
+    subject_ids = ["AD1","AD2","AD3","AD4","AD5","AD6"]    
+    #subject_ids = ["UG27","UG28","UG29","UG30","UG31"]
+    #subject_ids = ["ADS6","ADS12","ADS13","ADS16","ADS17","ADS19"]
 
     # The root folder path to search for the filenames in the data table
-    folder_path = Path("D:")
+    folder_path = Path("G:")
 
     # The folder path to save the NWB files
-    nwbfile_folder_path = Path("F:/NWB")
+    nwbfile_folder_path = Path("G:/NWB")
     if not nwbfile_folder_path.exists():
         nwbfile_folder_path.mkdir(exist_ok=True)
 
     # Whether to overwrite existing NWB files, default is False
-    overwrite = True
+    overwrite = False
 
     # Whether to run the conversion as a stub test
     # When set to True, write only a subset of the data for each session
